@@ -1,4 +1,5 @@
 class Pessoa:
+    olhos = 2    # atributo default ou atributo de classe
     def __init__(self, *filhos, nome = None, idade = 35):
         self.idade = idade
         self.nome = nome
@@ -23,7 +24,12 @@ if __name__ == '__main__':
     luciano.sobrenome = 'Ramalho'
     #print(luciano.sobrenome)
     del luciano.filhos
-    print(luciano.__dict__)
+    luciano.olhos = 1
     print(julio.__dict__)
-
-
+    print(luciano.__dict__)
+    Pessoa.olhos = 3
+    del luciano.olhos    # apaga o atributo do objeto e não da classe
+    print(Pessoa.olhos)
+    print(luciano.olhos)
+    print(julio.olhos)
+    print(id(Pessoa.olhos), id(luciano.olhos), id(julio.olhos))
